@@ -15,13 +15,12 @@ public class StatTester{
     
     // Constructor
     public StatTester(){
-        nums = new int[100];
+        nums = new int[10];
     }
-    
     
     //  Methods
     public void loadArray(){
-        for(int i = 0; i<100; i++){
+        for(int i = 0; i<nums.length; i++){
             nums[i] = (int)(Math.random()*10 + 1);
         }
     }
@@ -34,19 +33,38 @@ public class StatTester{
         }
     }
     public int getSum(){
-    
-        return null;
+        int sum = 0;
+        for(int i = 0; i < nums.length; i++){
+            sum += nums[i];
+        }
+        return sum;
     }
     public double getMean(){
-        
-        return null;
+        int s = getSum();
+        return (s/nums.length);
     }
     public double getMedian(){
         
-        return null;
+        return 2.0;
     }
     public int[] getMode(){
-        
-        return null;
+        int[] mode = new int[10];
+        for(int i = 0; i < nums.length; i++){
+            int c = nums[i] - 1;
+            mode[c] += 1;
+        }
+        int[] tmode = new int[11];
+        int f = 0;
+        for(int e = 0; e < mode.length; e++){
+            if(mode[e]!=0){
+                if(mode[e] == tmode[e]){
+                    f++;
+                    tmode[f] = mode[e];
+                }else if(mode[e] > tmode[e]){
+                    tmode[f] = mode[e];
+                }
+            }
+        }
+        return tmode;
     }
 }

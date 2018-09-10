@@ -10,5 +10,7 @@ public class StatRunner{
     
     public static void main(){
         StatTester st = new StatTester();
+        st.loadArray();
+        st.getMode();
     }
 }
