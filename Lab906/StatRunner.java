@@ -11,6 +11,8 @@ public class StatRunner{
     public static void main(){
         StatTester st = new StatTester();
         st.loadArray();
-        st.getMode();
+        st.printArray();
+        int[] amode = st.getMode();
+        st.printArrayGiven(amode);
     }
 }
