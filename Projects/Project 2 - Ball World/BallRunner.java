@@ -20,46 +20,48 @@ public class BallRunner
                     BallBot ballBot = new BallBot(ballWorld, startPoint, (int)(Math.random()*360), radius);
                     ballBotArray[freeBallBotIndex] = ballBot;
                 }
-                for(int i = 0; i < ballBotArray.length; i++){
-                    BallBot currentBB = ballBotArray[i];
-                    if(ballBotArray[i] != null){
-                        if(currentBB.canMoveForward(ballWorld)){
-                            currentBB.moveForward();
-                        }else{
-                            double currentHeading = currentBB.getHeading();
-                            currentBB.setHeading((int)(Math.random()*360));
-                        }
+            }
+            for(int i = 0; i < ballBotArray.length; i++){
+                if(ballBotArray[i] != null){
+                    if(ballBotArray[i].canMoveForward(ballWorld)){
+                        ballBotArray[i].moveForward();
+                    }else{
+                        double currentHeading = ballBotArray[i].getHeading();
+                        ballBotArray[i].setHeading((int)(Math.random()*360));
                     }
                 }
             }
         }   
     }
+
     public double distanceBetweenPoints(TGPoint point1, TGPoint point2){
         double distance = Math.sqrt(Math.pow((point1.x-point2.x), 2)+Math.pow((point1.y-point2.y), 2));
         return distance;
     }
+
     public boolean entranceClear(BallBot[] ballBotArray, TGPoint entrancePoint){
         boolean clear = true;
+        int ballsAtEntrance = 0;
         for(int i = 0; i < ballBotArray.length; i++){
-            BallBot currentBB = ballBotArray[i];
-            int ballsAtEntrance = 0;
             if(ballBotArray[i] != null){
-                if(distanceBetweenPoints(currentBB.getPoint(), entrancePoint) < currentBB.getRadius())
+                if(distanceBetweenPoints(ballBotArray[i].getPoint(), entrancePoint) < 2*ballBotArray[i].getRadius())
                     ballsAtEntrance++;
             }
-            if(ballsAtEntrance == 0) clear = true;
-            else clear = false;
         }
+        if(ballsAtEntrance == 0) clear = true;
+        else clear = false;
         return clear;
     }
+
     public int findFreeBallBotIndex(BallBot[] ballBotArray){
         for(int i = 0; i < ballBotArray.length; i++){
             if(ballBotArray[i] == null){
                 return i;
             }
-        }
+       }
         return ballBotArray.length;
     }
+
     public int newHeading(int currentHeading){
         int heading;
         if(currentHeading >= 0 || currentHeading < 90){
@@ -82,6 +84,7 @@ public class BallRunner
         BallBot ballBot = new BallBot(ballWorld, startPoint, startHeading, radius);
         ballBot.setColor(4);
     }
+
     public static void activity1(){
         BallWorld ballWorld = new BallWorld(500, 500);
         TGPoint startPoint = new TGPoint(0, 0);
