@@ -54,7 +54,15 @@ public class BallRunner
     }
     
     public BallBot ballBotToBounceOff(BallBot ballBot, BallBot[] ballBotArray){
-        
+        TGPoint p1 = ballBot.getPoint();
+        TGPoint p2 = ballBot.forwardPoint();
+        for(int i = 0; i < ballBotArray.length; i++){
+            BallBot otherBallBot = ballBotArray[i];
+            if(otherBallBot != null && otherBallBot != ballBot){
+                double currentDistance = distanceBetweenPoints(p1, otherBallBot.getPoint());
+            }
+        }
+        return ballBot;
     }
     
     public int findFreeBallBotIndex(BallBot[] ballBotArray){
@@ -66,16 +74,14 @@ public class BallRunner
         return ballBotArray.length;
     }
 
-    public int newHeading(int currentHeading){
+    public static int newHeading(int currentHeading){
         int heading;
-        if(currentHeading >= 0 || currentHeading < 90){
+        if(currentHeading >= 0 && currentHeading < 180){
             heading = (180-currentHeading);
-        }else if(currentHeading >= 90 || currentHeading < 180){
-            heading = (270-currentHeading);
-        }else if(currentHeading >= 180 || currentHeading < 270){
-            heading = (currentHeading + (2*4));
+        }else if(currentHeading >= 180 && currentHeading < 360){
+            heading = (currentHeading-180);
         }else{
-            heading = (90-currentHeading);
+            heading = 0;
         }
         return heading;
     }
@@ -119,16 +125,15 @@ public class BallRunner
     public static void activity1(){
         BallWorld ballWorld = new BallWorld(500, 500);
         TGPoint startPoint = new TGPoint(0, 0);
-        double startHeading = 0;
+        double startHeading = 30;
         int radius = 25;
         BallBot ballBot = new BallBot(ballWorld, startPoint, startHeading, radius);
-
         while(true){
             if(ballBot.canMoveForward(ballWorld)){
                 ballBot.moveForward();
             }else{
                 double currentHeading = ballBot.getHeading();
-                ballBot.setHeading(currentHeading + 90);
+                ballBot.setHeading(newHeading((int)currentHeading));//currentHeading + 90);
             }
         }
     }
