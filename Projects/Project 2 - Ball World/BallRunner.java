@@ -8,6 +8,7 @@
 public class BallRunner
 {
     public static void run(){
+        //declare and init
         int xPixels = 500;
         int yPixels = 500;
         BallWorld ballWorld = new BallWorld(xPixels, yPixels);
@@ -15,14 +16,17 @@ public class BallRunner
         int radius = 25;
         BallBot[] ballBotArray = new BallBot[1];
         BallRunner ballRunner = new BallRunner();
+        //game loop
         while(true){
+            //spawn new BallBots if entrance is clear and array is not full
             if(ballRunner.entranceClear(ballBotArray, startPoint)){
                 int freeBallBotIndex = ballRunner.findFreeBallBotIndex(ballBotArray);
                 if(freeBallBotIndex < ballBotArray.length){
-                    BallBot ballBot = new BallBot(ballWorld, startPoint, 330, radius);//(int)(Math.random()*360), radius);
+                    BallBot ballBot = new BallBot(ballWorld, startPoint, (int)(Math.random()*360), radius);
                     ballBotArray[freeBallBotIndex] = ballBot;
                 }
             }
+            //move each BallBot forward one step and change direction if colliding with wall or other BallBot
             for(int i = 0; i < ballBotArray.length; i++){
                 if(ballBotArray[i] != null){
                     if(ballBotArray[i].canMoveForward(ballWorld)){
@@ -40,12 +44,14 @@ public class BallRunner
             }
         }   
     }
-
+    
+    //calculate distance between two points (pythagorean theorem)
     public double distanceBetweenPoints(TGPoint point1, TGPoint point2){
         double distance = Math.sqrt(Math.pow((point1.x-point2.x), 2)+Math.pow((point1.y-point2.y), 2));
         return distance;
     }
-
+    
+    //check if there are no BallBots near startingPoint
     public boolean entranceClear(BallBot[] ballBotArray, TGPoint entrancePoint){
         boolean clear = true;
         int ballsAtEntrance = 0;
@@ -59,7 +65,8 @@ public class BallRunner
         else clear = false;
         return clear;
     }
-
+    
+    //check whether ballBot is touching another BallBot
     public BallBot ballBotToBounceOff(BallBot ballBot, BallBot[] ballBotArray){
         TGPoint p1 = ballBot.getPoint();
         TGPoint p2 = ballBot.forwardPoint();
@@ -89,6 +96,7 @@ public class BallRunner
     }
 
     //custom method I am working on which changes direction of ballBot based on the angle it hits the surface
+    //(not working at the moment)
     public static int newHeading(int currentHeading){
         int newHeading;
         if(currentHeading >= 0 && currentHeading <= 90){
