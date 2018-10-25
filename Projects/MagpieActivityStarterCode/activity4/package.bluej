@@ -2,8 +2,8 @@
 dependency1.from=MagpieRunner4
 dependency1.to=Magpie4
 dependency1.type=UsesDependency
-editor.fx.0.height=1160
-editor.fx.0.width=960
+editor.fx.0.height=0
+editor.fx.0.width=0
 editor.fx.0.x=0
 editor.fx.0.y=0
 objectbench.height=155
