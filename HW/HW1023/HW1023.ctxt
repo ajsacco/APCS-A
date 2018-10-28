@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=HW1023
+comment0.text=\n\ Write\ a\ description\ of\ class\ HW1023\ here.\n\n\ @author\ (Aidan\ Sacco)\n\ @version\ (1023)\n
+comment1.params=x
+comment1.target=java.lang.String\ go(int)
+comment2.params=
+comment2.target=void\ subs()
+comment3.params=
+comment3.target=void\ loop()
+comment4.params=str
+comment4.target=void\ countCode(java.lang.String)
+numComments=5
