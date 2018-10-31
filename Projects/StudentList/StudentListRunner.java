@@ -13,18 +13,35 @@ public class StudentListRunner
         Scanner scanner = new Scanner(System.in);
         StudentList sl = new StudentList();
         boolean loop = true;
-        String menuNumber = menuNumber(scanner, "1. Add a Student\n" +
-                                                "2. Delete a Student\n" +
-                                                "3. Edit a Student\n" +
-                                                "4. Clear Student Database\n" + 
-                                                "5. Print Entire Database\n" + 
-                                                "6. Print Student Info\n" +
-                                                "Please enter a number or type 'q' to quit:");
+        String menuNumber;
         while(loop){
+            menuNumber = menu(scanner);
             switch(menuNumber){
-                case "1": sl.addStudentToList();
+                case "1":
+                    clearScreen();
+                    System.out.print("Enter a name: ");
+                    String name = scanner.nextLine();
+                    System.out.print("Enter a student number: ");
+                    int number = scanner.nextInt();
+                    System.out.print("Enter a GPA: ");
+                    double gpa = scanner.nextDouble();
+                    sl.addStudentToList(name, number, gpa);
+                    menuNumber = menu(scanner);
+                    clearScreen();
                     break;
                 case "2": sl.deleteStudentFromList();
+                    System.out.println("Delete student by name or student number?\n1. Name\n2. Number");
+                    String option = scanner.nextLine();
+                    switch(option) {
+                        case "1":
+                            
+                            break;
+                        case "2":
+                            
+                            break;
+                        default:
+                            break;
+                    }
                     break;
                 case "3": sl.editStudent();
                     break;
@@ -43,8 +60,23 @@ public class StudentListRunner
         }
     }
 
+    public static String menu(Scanner scanner){
+        return menuNumber(scanner, "1. Add a Student\n" +
+                                                "2. Delete a Student\n" +
+                                                "3. Edit a Student\n" +
+                                                "4. Clear Student Database\n" + 
+                                                "5. Print Entire Database\n" + 
+                                                "6. Print Student Info\n" +
+                                                "Please enter a number or type 'q' to quit:");
+    }
+
     public static String menuNumber(Scanner scanner, String str){
         System.out.println(str);
         return scanner.nextLine();
+    }
+
+    public static void clearScreen(){
+        System.out.println("\u000c");
+        System.out.flush();
     }
 }
