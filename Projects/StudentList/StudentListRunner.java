@@ -1,4 +1,3 @@
-
 /**
  * Write a description of class StudentListRunner here.
  *
@@ -30,9 +29,10 @@ public class StudentListRunner
                     clearScreen();
                     break;
                 case "2": sl.deleteStudentFromList();
+                    clearScreen();
                     System.out.println("Delete student by name or student number?\n1. Name\n2. Number");
-                    String option = scanner.nextLine();
-                    switch(option) {
+                    String in2 = scanner.nextLine();
+                    switch(in2) {
                         case "1":
                             
                             break;
@@ -50,6 +50,14 @@ public class StudentListRunner
                 case "5": sl.printStudentList();
                     break;
                 case "6": sl.printStudent();
+                    clearScreen();
+                    System.out.println("Enter a name or number");
+                    String in6 = scanner.nextLine();
+                    if(isInt(in6)){
+                        sl.printStudentByNumber(Integer.parseInt(in6));
+                    } else {
+                        sl.printStudentByName(in6);
+                    }
                     break;
                 case "q": loop = false;
                     break;
@@ -78,5 +86,15 @@ public class StudentListRunner
     public static void clearScreen(){
         System.out.println("\u000c");
         System.out.flush();
+    }
+    
+    public static boolean isInt(String input){
+        try {
+            Integer.parseInt(input); 
+            return true;
+        }  
+        catch (NumberFormatException e){ 
+            return false;
+        } 
     }
 }

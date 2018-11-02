@@ -37,6 +37,20 @@ public class StudentList
                             " - GPA: " + stu.getGPA() + "]\n");
         }
     }
-    public void printStudent(){
+    public void printStudentByName(int num){
+        int e = 0;
+        for(int i = 0; i < studentList.size(); i++){if(studentList.get(i).getStudentNumber() == num)e = i;}
+        Student stu = studentList.get(e);
+            System.out.println("[Name: " + stu.getFullName() + 
+                            " - Student Number: " + stu.getStudentNumber() + 
+                            " - GPA: " + stu.getGPA() + "]\n");
+    }
+    public void printStudentByNumber(String name){
+        int e = 0;
+        for(int i = 0; i < studentList.size(); i++){if(studentList.get(i).getFullName() == name){e = i;}}
+        Student stu = studentList.get(e);
+            System.out.println("[Name: " + stu.getFullName() + 
+                            " - Student Number: " + stu.getStudentNumber() + 
+                            " - GPA: " + stu.getGPA() + "]\n");
     }
 }

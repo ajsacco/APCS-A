@@ -20,7 +20,26 @@ public class Student
     }
     
     public void parseName(String n){
-        
+        String first = "";
+        String middle = "";
+        String last = "";
+        int c = n.indexOf(",");
+        int sOne = n.indexOf(" ");
+        int sTwo = n.indexOf(" ", sOne + 1);
+        if (c == -1){
+            firstName = n.substring(0, sOne);
+            middleName = n.substring(sOne, sTwo);
+            lastName = n.substring(sTwo);
+        }else{
+            if(sTwo == -1){
+                lastName = n.substring(0, c);
+                firstName = n.substring(sOne + 1);
+            }else{
+                lastName = n.substring(0, c);
+                firstName = n.substring(sOne + 1, sTwo);
+                middleName = n.substring(sTwo);
+            }
+        }
     }
     
     public String getFullName(){
