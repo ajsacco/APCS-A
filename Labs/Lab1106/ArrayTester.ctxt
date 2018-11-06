@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=ArrayTester
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ ArrayTester\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
+comment1.target=void\ main()
+comment2.params=nums
+comment2.target=void\ loadArray(int[][])
+comment3.params=nums
+comment3.target=int\ sumAll(int[][])
+comment4.params=nums
+comment4.target=int\ findGreatest(int[][])
+comment5.params=nums\ greatest
+comment5.target=int\ numberOfGreatest(int[][],\ int)
+comment6.params=nums
+comment6.target=double\ findAverage(int[][])
+numComments=7
