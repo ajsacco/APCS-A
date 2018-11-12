@@ -12,9 +12,13 @@ public class StudentListRunner
         Scanner scanner = new Scanner(System.in);
         StudentList sl = new StudentList();
         boolean loop = true;
-        String menuNumber;
+        boolean mnSet = false;
+        String menuNumber = "";
         while(loop){
-            menuNumber = menu(scanner);
+            if(mnSet == false){
+                menuNumber = menu(scanner);
+                mnSet = true;
+            }
             switch(menuNumber){
                 case "1":
                     clearScreen();
@@ -28,40 +32,37 @@ public class StudentListRunner
                     menuNumber = menu(scanner);
                     clearScreen();
                     break;
-                case "2": sl.deleteStudentFromList();
+                case "2":
                     clearScreen();
-                    System.out.println("Delete student by name or student number?\n1. Name\n2. Number");
+                    System.out.println("Enter a name or number");
                     String in2 = scanner.nextLine();
-                    switch(in2) {
-                        case "1":
-                            
-                            break;
-                        case "2":
-                            
-                            break;
-                        default:
-                            break;
-                    }
+                    sl.deleteStudentFromList(in2);
                     break;
-                case "3": sl.editStudent();
+                case "3":
+                    clearScreen();
+                    System.out.println("Enter a name or number");
+                    String in3 = scanner.nextLine();
+                    sl.editStudent(in3, scanner);
                     break;
-                case "4": sl.clearList();
+                case "4":
+                    clearScreen();
+                    sl.clearList();
                     break;
-                case "5": sl.printStudentList();
+                case "5":
+                    clearScreen();
+                    sl.printStudentList();
                     break;
-                case "6": sl.printStudent();
+                case "6":
                     clearScreen();
                     System.out.println("Enter a name or number");
                     String in6 = scanner.nextLine();
-                    if(isInt(in6)){
-                        sl.printStudentByNumber(Integer.parseInt(in6));
-                    } else {
-                        sl.printStudentByName(in6);
-                    }
+                    sl.printStudent(in6);
                     break;
-                case "q": loop = false;
+                case "q":
+                    loop = false;
                     break;
                 default:
+                    mnSet = true;
                     menuNumber = menuNumber(scanner, "Invalid option. Please enter a new number:");
                     break;
             }
@@ -70,12 +71,12 @@ public class StudentListRunner
 
     public static String menu(Scanner scanner){
         return menuNumber(scanner, "1. Add a Student\n" +
-                                                "2. Delete a Student\n" +
-                                                "3. Edit a Student\n" +
-                                                "4. Clear Student Database\n" + 
-                                                "5. Print Entire Database\n" + 
-                                                "6. Print Student Info\n" +
-                                                "Please enter a number or type 'q' to quit:");
+            "2. Delete a Student\n" +
+            "3. Edit a Student\n" +
+            "4. Clear Student Database\n" + 
+            "5. Print Entire Database\n" + 
+            "6. Print Student Info\n" +
+            "Please enter a number or type 'q' to quit:");
     }
 
     public static String menuNumber(Scanner scanner, String str){
@@ -87,7 +88,7 @@ public class StudentListRunner
         System.out.println("\u000c");
         System.out.flush();
     }
-    
+
     public static boolean isInt(String input){
         try {
             Integer.parseInt(input); 
