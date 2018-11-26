@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.params=a
+comment0.target=Cell(int)
+comment0.text=\r\n\ Constructor\ for\ objects\ of\ class\ Cell\r\n
+comment1.params=
+comment1.target=void\ loadNeighbors()
+comment1.text=\r\n\ ++++++++++++++\ \ methods\r\n
+comment2.params=
+comment2.target=int\ getInt()
+numComments=3
