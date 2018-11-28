@@ -1,10 +1,10 @@
-
 /**
  * 
  * CellMatrix
  * @author (eettlin) 
  * @version (11-26-18)
  */
+
 public class CellMatrix{
     /**
      * +++++++++++++++++++++Instance variables
@@ -21,23 +21,43 @@ public class CellMatrix{
        
     }
     
-    /**
-     * ++++++++++++++  methods
-     */
-    
     //  Load neighbor cells into the neighbors array
-    public void loadNeighbors(int row, int col){
-        if(row >= 1 && row < cells.length - 1 && col >= 1 && col < cells[row].length - 1){
-            neighbors[0] = //North
-            neighbors[1] = //East
-            neighbors[2] = //South
-            neighbors[3] = //West
-        } else if(row == 0 && col >= 1 && col < cells[row].length - 1){
-            neighbors[0] = //North
-            neighbors[1] = //East
-            neighbors[2] = //South
-            neighbors[3] = //West
+    public void loadNeighbors(){
+        for(int r = 0; r < cells.length; r++){
+            for(int c = 0; c < cells[r].length; c++){
+                int i = 0;
+                Cell[] neighbors = cells[r][c].getNeighbors();
+                for(int n = 0; n < neighbors.length; n++){
+                    if(this.hasNeighbor(n, r, c) != null){
+                        neighbors[i] = this.hasNeighbor(n, r, c);
+                        i++;
+                    }
+                }
+            }
         }
+    }
+    
+    public Cell hasNeighbor(int dir, int r, int c){
+        Cell cell = null;
+        try {
+            switch(dir){
+                case 0:
+                    cell = cells[r-1][c];
+                    break;
+                case 1:
+                    cell = cells[r][c+1];
+                    break;
+                case 2:
+                    cell = cells[r+1][c];
+                    break;
+                case 3:
+                    cell = cells[r][c-1];
+                    break;
+            }
+        } catch(IndexOutOfBoundsException e){
+        }
+        
+        return cell;
     }
     
     /**
@@ -63,7 +83,7 @@ public class CellMatrix{
     //  Findis the sum of each of the neighbors and returns the greatest 
     // neighbor value
     public int getGreatestNeighbors(){
-       
+        
         return 0;
     }
 }

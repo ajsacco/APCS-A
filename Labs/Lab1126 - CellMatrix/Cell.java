@@ -17,6 +17,18 @@ public class Cell
         neighbors = new Cell[4];// North, East, South, and West only 
     }
     
+    public Cell[] getNeighbors(){
+        return neighbors;
+    }
+    
+    public int getNeighborSum(){
+        int sum = 0;
+        for(int i = 0; i < neighbors.length; i++){
+            sum += neighbors[i].getInt();
+        }
+        return sum;
+    }
+    
     public int getInt(){
         return x;
     }
