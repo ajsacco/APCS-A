@@ -402,6 +402,16 @@ public class Picture extends SimplePicture
     this.write("collage.jpg");
   }
   
+  /** Method to create a collage of several pictures*/
+  public void myCollage()
+  {
+    Picture canvas = new Picture("640x480.jpg");
+    this.copyPart(new Picture("seagull.jpg"), 0, 0, 160, 200, 400, 400);
+    this.copyPart(new Picture("snowman.jpg"), 0, 200, 60, 100, 300, 300);
+    this.copyPart(new Picture("kitten2.jpg"), 0, 400, 20, 110, 260, 350);
+    this.mirrorHorizontal();
+    this.write("myCollage.jpg");
+  }
   
   /** Method to show large changes in color 
     * @param edgeDist the distance for finding edges

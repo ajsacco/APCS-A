@@ -94,15 +94,14 @@ public class PictureTester
     temple.explore();
   }
   
-<<<<<<< HEAD
   /** Method to test the copyPart method */
   public static void testCopyPart()
   {
     Picture canvas = new Picture("640x480.jpg");
-    canvas.copyPart(new Picture("snowman.jpg"), 0, 0, 200, 200, 299, 399);
-    canvas.copyPart(new Picture("seagull.jpg"), 0, 0, 200, 200, 400, 400);
+    canvas.createCollage();
     canvas.explore();
-=======
+  }
+    
   /** Method to test mirrorArms */
   public static void testMirrorArms()
   {
@@ -119,7 +118,6 @@ public class PictureTester
     gull.explore();
     gull.mirrorGull();
     gull.explore();
->>>>>>> f8b29149cb7a972712b8b29381b273439f60a19c
   }
   
   /** Method to test the collage method */
@@ -127,6 +125,14 @@ public class PictureTester
   {
     Picture canvas = new Picture("640x480.jpg");
     canvas.createCollage();
+    canvas.explore();
+  }
+  
+  /** Method to test the collage method */
+  public static void testMyCollage()
+  {
+    Picture canvas = new Picture("640x480.jpg");
+    canvas.myCollage();
     canvas.explore();
   }
   
@@ -158,7 +164,7 @@ public class PictureTester
     //testMirrorHorizontalBotToTop();
     //testMirrorTemple();
     //testMirrorArms();
-    testMirrorGull();
+    //testMirrorGull();
     //testMirrorDiagonal();
     //testCollage();
     //testCopy();
