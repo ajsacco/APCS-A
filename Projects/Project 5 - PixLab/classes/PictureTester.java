@@ -94,6 +94,15 @@ public class PictureTester
     temple.explore();
   }
   
+  /** Method to test the copyPart method */
+  public static void testCopyPart()
+  {
+    Picture canvas = new Picture("640x480.jpg");
+    canvas.copyPart(new Picture("snowman.jpg"), 0, 0, 200, 200, 299, 399);
+    canvas.copyPart(new Picture("seagull.jpg"), 0, 0, 200, 200, 400, 400);
+    canvas.explore();
+  }
+  
   /** Method to test the collage method */
   public static void testCollage()
   {
