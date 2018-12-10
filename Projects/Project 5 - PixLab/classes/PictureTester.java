@@ -140,7 +140,17 @@ public class PictureTester
   public static void testEdgeDetection()
   {
     Picture swan = new Picture("swan.jpg");
-    swan.edgeDetection(10);
+    swan.explore();
+    swan.edgeDetection(15);
+    swan.explore();
+  }
+  
+  /** Method to test edgeDetectionVertical */
+  public static void testEdgeDetectionVertical()
+  {
+    Picture swan = new Picture("profile.jpg");
+    swan.explore();
+    swan.edgeDetectionVertical(10);
     swan.explore();
   }
   
@@ -169,6 +179,7 @@ public class PictureTester
     //testCollage();
     //testCopy();
     //testEdgeDetection();
+    testEdgeDetectionVertical();
     //testEdgeDetection2();
     //testChromakey();
     //testEncodeAndDecode();
