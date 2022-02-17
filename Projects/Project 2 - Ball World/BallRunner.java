@@ -14,7 +14,7 @@ public class BallRunner
         BallWorld ballWorld = new BallWorld(xPixels, yPixels);
         TGPoint startPoint = new TGPoint(0, 0);
         int radius = 25;
-        BallBot[] ballBotArray = new BallBot[1];
+        BallBot[] ballBotArray = new BallBot[10];
         BallRunner ballRunner = new BallRunner();
         //game loop
         while(true){
@@ -98,7 +98,7 @@ public class BallRunner
     //custom method I am working on which changes direction of ballBot based on the angle it hits the surface
     //(not working at the moment)
     public static int newHeading(int currentHeading){
-        int newHeading;
+        /*int newHeading;
         if(currentHeading >= 0 && currentHeading <= 90){
             newHeading = 180 - currentHeading;
         }else if(currentHeading >= 90 && currentHeading < 360){
@@ -111,6 +111,8 @@ public class BallRunner
             newHeading = 0;
         }
         return newHeading;
+    }*/
+        return (int)(Math.random()*360);
     }
     //=================================================================================================//
     public static void activity4(){

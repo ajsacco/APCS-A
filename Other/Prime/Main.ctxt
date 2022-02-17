@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=Main
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+comment2.params=base\ pow
+comment2.target=java.math.BigInteger\ bPow(java.math.BigInteger,\ java.math.BigInteger)
+comment3.params=n\ i
+comment3.target=boolean\ isPrime(java.math.BigInteger,\ java.math.BigInteger)
+numComments=4
